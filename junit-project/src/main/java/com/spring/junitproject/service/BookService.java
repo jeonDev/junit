@@ -1,6 +1,7 @@
 package com.spring.junitproject.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -34,8 +35,17 @@ public class BookService {
                 .collect(Collectors.toList());
             // findAll -> Book Return
     }
-    // 3. 책 한건 보기
 
+    // 3. 책 한건 보기
+    public BookResponseDto 책한건보기(Long id) {
+        Optional<Book> bookOp = bookRepository.findById(id);
+        if(bookOp.isPresent(){
+            return new BookResponseDto().toDto(bookOp.get());
+        } else {
+            throw new RuntimeException("해당 아이디를 찾을 수 없습니다.");
+        }
+    }
+    
     // 4. 책삭제
 
     // 5. 책수정
