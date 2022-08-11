@@ -1,6 +1,8 @@
 package com.spring.junitproject.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,7 +28,12 @@ public class BookService {
     
 
     // 2. 책목록보기
-
+    public List<BookResponseDto> 책목록보기() {
+        return bookRepository.findAll().stream()
+                .map(new BookResponseDto()::toDto)
+                .collect(Collectors.toList());
+            // findAll -> Book Return
+    }
     // 3. 책 한건 보기
 
     // 4. 책삭제
