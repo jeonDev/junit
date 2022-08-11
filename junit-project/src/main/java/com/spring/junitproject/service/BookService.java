@@ -39,13 +39,13 @@ public class BookService {
     // 3. 책 한건 보기
     public BookResponseDto 책한건보기(Long id) {
         Optional<Book> bookOp = bookRepository.findById(id);
-        if(bookOp.isPresent(){
+        if(bookOp.isPresent()){
             return new BookResponseDto().toDto(bookOp.get());
         } else {
             throw new RuntimeException("해당 아이디를 찾을 수 없습니다.");
         }
     }
-    
+
     // 4. 책삭제
 
     // 5. 책수정
